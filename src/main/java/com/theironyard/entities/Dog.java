@@ -13,29 +13,28 @@ public class Dog {
     int id;
 
     @Column(nullable = false)
-    String name;
+    public String name;
 
     @Column(nullable = false)
-    String type;
+    public String type;
 
     @Column(nullable = false)
-    String color;
+    public String color;
 
     @Column(nullable = false)
-    String image;
+    public String image;
 
-    @Column(nullable = false)
-    boolean isFound;
+    @Transient
+    public boolean isMe;
 
     @ManyToOne
-    User user;
+    public User user;
 
-    public Dog(String name, String type, String color, String image, boolean isFound, User user) {
+    public Dog(String name, String type, String color, String image, User user) {
         this.name = name;
         this.type = type;
         this.color = color;
         this.image = image;
-        this.isFound = isFound;
         this.user = user;
     }
 
@@ -79,12 +78,12 @@ public class Dog {
         this.image = image;
     }
 
-    public boolean isFound() {
-        return isFound;
+    public boolean isMe() {
+        return isMe;
     }
 
-    public void setFound(boolean found) {
-        isFound = found;
+    public void setMe(boolean me) {
+        isMe = me;
     }
 
     public User getUser() {

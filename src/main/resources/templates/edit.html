@@ -1,5 +1,6 @@
 <html>
 <body>
+{{#dog}}
 <form action="/edit-dog" method="post">
     <input type="hidden" value="{{id}}" name="id"/>
     Name: <input type="text" value="{{name}}" name="name"/><br>
@@ -8,5 +9,6 @@
     Image: <input type="text" value="{{image}}" name="image" width="200"/><br>
     <button type="submit">Submit Lost Dog</button>
 </form>
+{{/dog}}
 </body>
 </html>
