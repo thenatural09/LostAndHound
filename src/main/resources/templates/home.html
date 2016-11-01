@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LostAndHound</title>
+</head>
+<body>
+{{^user}}
+<form action="/login" method="post">
+    <input type="text" placeholder="Username" name="username"/>
+    <input type="password" placeholder="Password" name="password"/>
+    <button type="submit">Login</button>
+</form>
+{{/user}}
+
+{{#user}}
+Hello, {{name}}!
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form><br>
+
+<form action="/dog" method="post">
+    <input type="text" placeholder="Dog Name" name="name"/>
+    <input type="text" placeholder="Dog Type" name="type"/>
+    <input type="text" placeholder="Dog Color" name="color"/>
+    <input type="text" placeholder="Image URL" name="image" width="200"/>
+    <button type="submit">Submit Lost Dog</button>
+</form>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Color</th>
+        <th>Submitter</th>
+        <th>Image</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {{#dogs}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{type}}</td>
+        <td>{{color}}</td>
+        <td>{{#user}}{{name}}{{/user}}</td>
+        <td><img src="{{image}}" width="100" height="100"/></td>
+        <td>
+            {{#isMe}}
+            <form action="/delete-dog" method="post">
+                <input type="hidden" value="{{id}}" name="id"/>
+                <button type="submit">Delete</button>
+            </form>
+            {{/isMe}}
+        </td>
+        <td>
+            {{#isMe}}
+            <form action="/edit-dog" method="get">
+                <input type="hidden" value="{{id}}" name="id"/>
+                <button type="submit">Edit</button>
+            </form>
+            {{/isMe}}
+        </td>
+    </tr>
+    {{/dogs}}
+</table>
+{{/user}}
+</body>
+</html>
