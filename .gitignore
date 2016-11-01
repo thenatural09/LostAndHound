@@ -1,6 +1,6 @@
 .gradle
 /build/
-!LostAndHound.zip
+!gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
 .apt_generated
